@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* FRANCISCO PIRES JUNIOR.
+*  CIÊNCIA DA COMPUTAÇÃO - UFRR
+*/
+
+void Tipo_R(){
+	printf("Instrucao do tipo R\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nExecucao\n\t");
+	printf("UALFonteA= 1\n\tUALFonteB = 00\n\tUALOp = 10\n");
+	printf("\nTermino da Instrucao de tipo R\n\t");
+	printf("RegDst = 1\n\tEscReg\n\tMemparaReg = 0\n");
+}
+
+void Tipo_beq(){
+	printf("Instrucao do tipo I\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nTermino do Desvio Condicional\n\t");
+	printf("UALFonteA = 1\n\tUALFonteB = 00\n\tUALOp = 01\n\tPCEscCond\n\tFontePC = 01\n");
+}
+
+void Tipo_bne(){
+	printf("Instrucao do tipo I\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nTermino do Desvio Condicional\n\t");
+	printf("UALFonteA = 1\n\tUALFonteB = 00\n\tUALOp = 01\n\tPCEscCond\n\tFontePC = 01\n");
+}
+
+void Tipo_J(){
+  printf("Instrucao do tipo J\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nTermino do Desvio Incondicional\n\t");
+	printf("PCEsc\n\tFontePC= 10\n\t");
+
+}
+
+void Tipo_sw(){
+	printf("Instrucao do tipo I\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nCalculo do endereço de memoria\n\t");
+	printf("UALFonteA = 1\n\tOAULFonteB = 10\n\tAULOp = 00\n");
+	printf("\nAcesso a memoria\n\t");
+	printf("EscMem\n\tlouD = 1\n");
+}
+
+void Tipo_lw(){
+	printf("Instrucao do tipo I\n\n");
+	printf("Busca Instrucao \n\t");
+	printf("LeMem\n\tUALFonteA = 0\n\tlouD = 0\n\tIREsc\n\tUALFonteB = 01\n\tUALOp= 00\n\tPCEsc\n\tFontePC = 00\n");
+	printf("\nDecodificacao da instrucao/Busca em Registrador\n\t");
+	printf("UALFonteA = 0\n\tUALFonteB = 11\n\tUALOp = 00\n");
+	printf("\nCalculo do endereço de memoria\n\t");
+	printf("UALFonteA = 1\n\tOAULFonteB = 10\n\tAULOp = 00\n");
+	printf("\nAcesso a memoria\n\t");
+	printf("LerMem\n\tlouD = 1\n");
+	printf("\nPasso de Escrita\n\t");
+	printf("RegDst = 0\n\tEscReg\n\tMemparaReg = 0\n");
+}
+
+int bin_to_dec(int bin){
+    int total = 0;
+    int potencia = 1;
+
+    while(bin > 0) {
+        total += bin % 10 * potencia;
+        bin = bin / 10;
+        potencia = potencia * 2;
+    }
+
+    return total;
+}
+
+int main(){
+
+	int dec = 0;
+    int bin = 0;
+
+    printf("Bits: ");
+    scanf("%d", &bin);
+
+    dec = bin_to_dec(bin);
+
+	switch(dec){
+	case 0:
+		Tipo_R();
+		break;
+	case 1:
+		Tipo_beq();
+		break;
+	case 2:
+		Tipo_bne();
+		break;
+	case 3:
+		Tipo_J();
+		break;
+	case 4:
+		Tipo_sw();
+		break;
+	case 5:
+		Tipo_lw();
+		break;
+	default:
+		printf("Tipo invalido\n");
+		break;
+	}
+	return 0;
+}
